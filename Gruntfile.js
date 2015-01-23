@@ -27,17 +27,23 @@ module.exports = function(grunt) {
 			main: {
 				files: [{
 					expand: true,
-					src: ['assets/js/vendor/*/dist/**/*.js'],
+					src: ['assets/js/vendor/*/dist/**/*.js',
+					'assets/js/vendor/*/dist/**/*.css',
+					'assets/js/vendor/*/dist/**/*.map',
+					'assets/js/vendor/*/assets/**/*.js'
+					],
 					dest: 'build/'
 				},{
 					expand: true,
-					src: ['assets/js/vendor/*/dist/**/*.css'],
-					dest: 'build/'
-				},{
-					expand: true,
-					src: ['assets/js/vendor/*/dist/**/*.map'],
-					dest: 'build/'
-				}],
+					src: ['assets/js/vendor/*/assets/**/*.ttf',
+					'assets/js/vendor/*/assets/**/*.eot',
+					'assets/js/vendor/*/assets/**/*.svg',
+					'assets/js/vendor/*/assets/**/*.woff',
+					'assets/js/vendor/*/assets/**/*.woff2'
+					],
+					flatten: true,
+					dest: 'build/assets/fonts/bootstrap/'
+				}]
 			},
 		},
 
@@ -52,6 +58,17 @@ module.exports = function(grunt) {
 					flatten: true,
 					filenameSuffix: '.html'
 				}
+			}
+		},
+
+		//Wiredep of bower
+		wiredep: {
+			task: {
+				src: [
+				'*.html',
+				'assets/scss/main.scss'
+				],
+				options: {}
 			}
 		},
 
@@ -115,16 +132,6 @@ module.exports = function(grunt) {
 				files: {
 					'build/assets/js/main.js' : 'assets/js/main.js'
 				}
-			}
-		},
-
-		//Wiredep of bower
-		wiredep: {
-			task: {
-				src: [
-					'*.html'
-				],
-				options: {}
 			}
 		},
 
