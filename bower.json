@@ -16,6 +16,11 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "~3.3.2"
+    "bootstrap-sass": "~3.3.2",
+    "jquery": "~1.9",
+    "backbone": null,
+    "underscore": null,
+    "requirejs": null,
+    "requirejs-text":null
   }
 }

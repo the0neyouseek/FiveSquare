@@ -30,7 +30,11 @@ module.exports = function(grunt) {
 					src: ['assets/js/vendor/*/dist/**/*.js',
 					'assets/js/vendor/*/dist/**/*.css',
 					'assets/js/vendor/*/dist/**/*.map',
-					'assets/js/vendor/*/assets/**/*.js'
+					'assets/js/vendor/*/assets/**/*.js',
+					'assets/js/vendor/backbone/backbone.js',
+					'assets/js/vendor/requirejs/require.js',
+					'assets/js/vendor/requirejs-text/text.js',
+					'assets/js/vendor/underscore/underscore.js'
 					],
 					dest: 'build/'
 				},{
