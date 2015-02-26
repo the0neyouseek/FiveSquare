@@ -34,7 +34,8 @@ module.exports = function(grunt) {
 					'assets/js/vendor/backbone/backbone.js',
 					'assets/js/vendor/requirejs/require.js',
 					'assets/js/vendor/requirejs-text/text.js',
-					'assets/js/vendor/underscore/underscore.js'
+					'assets/js/vendor/underscore/underscore.js',
+					'assets/js/*.js'
 					],
 					dest: 'build/'
 				},{
