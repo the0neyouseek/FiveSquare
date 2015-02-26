@@ -94,9 +94,8 @@ module.exports = function(grunt) {
 		sass: {
 			dev: {
 				options: {
-					outputStyle: 'nested',
-					sourceMap: true,
-					includePaths: require('node-bourbon').includePaths
+					style: 'nested',
+					sourcemap: 'auto'
 				},
 				files: {
 					'build/assets/css/main.css': 'assets/scss/main.scss'
@@ -104,22 +103,12 @@ module.exports = function(grunt) {
 			},
 			prod: {
 				options: {
-					outputStyle: 'compressed',
-					sourceMap: false,
-					banner: '/*!\n* <%= pkg.title %>\n* <%= pkg.description %>\n* <%= pkg.url.public %>\n* @author <%= pkg.author.name %>.\n* @version <%= pkg.version %>\n* Copyright <%= grunt.template.today("yyyy") %>. <%= pkg.license.type %> licensed.\n*/',
-					includePaths: require('node-bourbon').includePaths
+					style: 'compressed',
+					sourcemap: 'none'
 				},
 				files: {
 					'build/assets/css/main.css': 'assets/scss/main.scss'
 				}
-			}
-		},
-
-		// Concatenate all js files and libraries
-		concat: {
-			dist: {
-				src: ['assets/js/vendor/*.js'], // All JS in the libs folder
-				dest: 'assets/js/main.js'
 			}
 		},
 
@@ -190,7 +179,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['assets/js/**/*.js'],
-				tasks: ['copy','concat'],
+				tasks: ['copy','uglify'],
 				options: {
 					spawn: false
 				}
@@ -228,22 +217,21 @@ module.exports = function(grunt) {
 	});
 
 	// Dependencies
+	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-sass');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-wiredep');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-includes');
+	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-todo');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-browser-sync');
-	grunt.loadNpmTasks('grunt-notify');
+	grunt.loadNpmTasks('grunt-wiredep');
 
 	// Tasks
 	grunt.registerTask( 'default', [ 'browserSync','watch' ] ); // Default
 	grunt.registerTask( 'dev', [ 'browserSync','watch' ] ); // Development
-	grunt.registerTask( 'prod', [ 'copy','includes','wiredep','htmlmin','sass:prod','concat','uglify','todo','imagemin','svgmin' ] ); // Production
+	grunt.registerTask( 'prod', [ 'copy','includes','wiredep','htmlmin','sass:prod','uglify','todo','imagemin','svgmin' ] ); // Production
 };

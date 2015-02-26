@@ -1,4 +1,10 @@
 @import "variables";
 // bower:scss
-@import "../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../js/vendor/bootstrap-sass/assets/stylesheets/bootstrap";
 // endbower
+
+body { padding-top: 50px; }
+
+.navbar-toggle {
+    display: block;
+}
