@@ -1,5 +1,10 @@
 // Router avec RequireJs + Backbone
-define(['jquery','underscore','backbone'], function($,_,Backbone) {
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'views/checkin/list'
+    ], function($,_,Backbone,checkInListView) {
 
     var Router = Backbone.Router.extend({
         routes : {

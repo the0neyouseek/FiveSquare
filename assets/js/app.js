@@ -5,7 +5,7 @@ define([
     'backbone',
     'bootstrap',
     'router'
-], function($,_,Backbone,bootstrap,Router) {
+    ], function($,_,Backbone,bootstrap,Router) {
 
     var initialize = function() {
         $('.navbar-brand').append('<sup>+</sup>');
