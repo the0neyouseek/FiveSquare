@@ -16,7 +16,16 @@ define([
 
     var initialize = function() {
         var router = new Router();
+        $.ajaxPrefilter(function(options,originalOptions,jqXHR) {
+            options.url = 'http://checkin-api.dev.cap-liberte.com'+options.url;
+            options.crossDomain = {
+                crossDomain:true
+            };
+        });
         router.on('route:home', function() {
+            checkInListView = new checkInListView();
+            checkInListView.render();
+
             console.log('Home');
         });
         router.on('route:hello', function(name) {
