@@ -8,13 +8,14 @@ require.config({
         backbone: 'vendor/backbone/backbone'
     },
     shim: {
-        'bootstrap': {
-            deps: ['jquery'],
-            export: 'bootstrap'
+        'jquery': {
+            export: '$'
         },
         'underscore': {
-            deps: ['jquery'],
             export: '_'
+        },
+        'bootstrap': {
+            deps: ['jquery']
         },
         'backbone': {
             deps: ['underscore','jquery'],
