@@ -1,6 +1,5 @@
-// Fichier principale pour requirejs
+// Fichier config pour RequireJs
 
-// Config
 require.config({
     paths: {
         jquery: 'vendor/jquery/dist/jquery',
@@ -24,4 +23,6 @@ require.config({
     }
 });
 
-require(['app']);
+require(['app'], function(App) {
+    App.initialize();
+});
