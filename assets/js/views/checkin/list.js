@@ -18,7 +18,13 @@ define([
                 success: function(checkins) {
                     for (var i = 0; i < checkins.models.length; i++) {
                         console.log(checkins.models[i]);
-                        self.$el.append(self.template);
+                        
+                        self.$el.append(
+                            self.template({
+                                id:checkins.models[i].attributes.id,
+                                checkinName:checkins.models[i].attributes.created_at
+                                })
+                            );
                     }
                 }
             });
