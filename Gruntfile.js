@@ -39,7 +39,8 @@ module.exports = function(grunt) {
 					'assets/js/collections/**/*.js',
 					'assets/js/models/**/*.js',
 					'assets/js/tools/**/*.js',
-					'assets/js/views/**/*.js'
+					'assets/js/views/**/*.js',
+					'assets/template/**/*.html'
 					],
 					dest: 'build/'
 				},{
@@ -187,7 +188,7 @@ module.exports = function(grunt) {
 		// Watch all js and Sass and compile them
 		watch: {
 			scripts: {
-				files: ['assets/js/**/*.js'],
+				files: ['assets/js/**/*.js','assets/template/**/*.html'],
 				tasks: ['copy','uglify'],
 				options: {
 					spawn: false

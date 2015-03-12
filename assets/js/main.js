@@ -5,7 +5,8 @@ require.config({
         jquery: 'vendor/jquery/dist/jquery',
         bootstrap: 'vendor/bootstrap-sass/assets/javascripts/bootstrap',
         underscore: 'vendor/underscore/underscore',
-        backbone: 'vendor/backbone/backbone'
+        backbone: 'vendor/backbone/backbone',
+        text: 'vendor/requirejs-text/text'
     },
     shim: {
         'jquery': {
