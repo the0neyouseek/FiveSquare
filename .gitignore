@@ -101,3 +101,6 @@ Icon.png
 # Custom
 build/
 assets/js/vendor
+
+### Angular ###
+assets/js/config.js
