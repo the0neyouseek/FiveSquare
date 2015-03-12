@@ -3,7 +3,10 @@
 @import "../js/vendor/bootstrap-sass/assets/stylesheets/bootstrap";
 // endbower
 
-body { padding-top: 50px; }
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    padding-top: 50px;
+}
 
 .navbar-toggle {
     display: block;
