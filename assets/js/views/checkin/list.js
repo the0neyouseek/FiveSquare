@@ -5,24 +5,22 @@ define([
     'backbone',
     'collections/checkins',
     'text!../../../template/checkins/list.html'
-], function($,_,Backbone,checkInCollection,checkInListTemplate) {
+], function($,_,Backbone,CheckInCollection,CheckInListTemplate) {
 
     var CheckinListView = Backbone.View.extend({
         el: '.list-group',
-        template: _.template(checkInListTemplate),
+        template: _.template(CheckInListTemplate),
         render: function() {
             var self = this;
             console.log('CheckinListView Render');
-            checkInCollection = new checkInCollection();
+            checkInCollection = new CheckInCollection();
             checkInCollection.fetch({
                 success: function(checkins) {
                     for (var i = 0; i < checkins.models.length; i++) {
-                        console.log(checkins.models[i]);
-                        
                         self.$el.append(
                             self.template({
                                 id:checkins.models[i].attributes.id,
-                                checkinName:checkins.models[i].attributes.created_at
+                                checkinName:checkins.models[i].attributes.id
                                 })
                             );
                     }
