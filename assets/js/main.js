@@ -6,11 +6,17 @@ require.config({
         bootstrap: 'vendor/bootstrap-sass/assets/javascripts/bootstrap',
         underscore: 'vendor/underscore/underscore',
         backbone: 'vendor/backbone/backbone',
-        text: 'vendor/requirejs-text/text'
+        geoloc: 'tools/geoloc',
+        text: 'vendor/requirejs-text/text',
+        async: 'vendor/requirejs-plugins/src/async',
+        googleMap: 'vendor/googlemaps-amd/src/googlemaps'
     },
     shim: {
         'jquery': {
             export: '$'
+        },
+        'geoloc': {
+            export: 'geoloc'
         },
         'underscore': {
             export: '_'
