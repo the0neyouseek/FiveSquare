@@ -8,7 +8,6 @@ define([
     ], function($,_,Backbone,bootstrap,Router) {
 
     var initialize = function() {
-        $('.navbar-brand').append('<sup>+</sup>');
         Router.initialize();
     };
 
