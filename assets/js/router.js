@@ -4,14 +4,16 @@ define([
     'underscore',
     'backbone',
     'views/checkin/list',
+    'views/checkin/detail',
+    'views/checkin/ajout',
     'config'
-], function($,_,Backbone,checkInListView,Config) {
+], function($,_,Backbone,CheckInListView,CheckinDetailView,CheckinAddView,Config) {
 
     var Router = Backbone.Router.extend({
         routes : {
             "": "home",
-            "hello": "hello",
-            "hello/:requete": "hello"
+            "checkin/:id":"checkin",
+            "add":"checkinAdd"
         }
     });
 
@@ -24,20 +26,33 @@ define([
             };
         });
         router.on('route:home', function() {
-            checkInListView = new checkInListView();
+            checkInListView = new CheckInListView();
             checkInListView.render();
 
-            console.log('Home');
+            console.log('Route: Home');
         });
-        router.on('route:hello', function(name) {
-            if (name !== null){
-                console.log('hello '+name);
-            } else {
-                console.log('hello anonymous');
-            }
+        router.on('route:checkin', function(id) {
+            checkinDetailView = new CheckinDetailView();
+            checkinDetailView.render(id);
+
+            console.log('Route: Detail du checkin');
+        });
+        router.on('route:checkinAdd',function() {
+            checkinAddView = new CheckinAddView();
+            checkinAddView.render();
+
+            console.log('Route: Ajout de checkin');
         });
         Backbone.history.start();
     };
+
+    require.config({
+        googlemaps: {
+            params: {
+                key: Config.googleMapKey
+            }
+        }
+    });
 
     return {
         initialize: initialize
