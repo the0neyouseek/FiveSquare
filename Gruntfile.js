@@ -31,10 +31,13 @@ module.exports = function(grunt) {
 					'assets/js/vendor/*/dist/**/*.css',
 					'assets/js/vendor/*/dist/**/*.map',
 					'assets/js/vendor/*/assets/**/*.js',
+					'assets/js/vendor/geoloc.js',
 					'assets/js/vendor/backbone/backbone.js',
 					'assets/js/vendor/requirejs/require.js',
 					'assets/js/vendor/requirejs-text/text.js',
 					'assets/js/vendor/underscore/underscore.js',
+					'assets/js/vendor/googlemaps-amd/src/googlemaps.js',
+					'assets/js/vendor/requirejs-plugins/src/async.js',
 					'assets/js/*.js',
 					'assets/js/collections/**/*.js',
 					'assets/js/models/**/*.js',
@@ -122,18 +125,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Minify all js
-		uglify: {
-			options: {
-				banner: '/*!\n* <%= pkg.title %>\n* <%= pkg.description %>\n* <%= pkg.url.public %>\n* @author <%= pkg.author.name %>.\n* @version <%= pkg.version %>\n* Copyright <%= grunt.template.today("yyyy") %>. <%= pkg.license.type %> licensed.\n*/'
-			},
-			dist: {
-				files: {
-					'build/assets/js/main.js' : 'assets/js/main.js'
-				}
-			}
-		},
-
 		// Todos and Fixme
 		todo: {
 			options:{
@@ -189,7 +180,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['assets/js/**/*.js','assets/template/**/*.html'],
-				tasks: ['copy','uglify'],
+				tasks: ['copy'],
 				options: {
 					spawn: false
 				}
@@ -232,7 +223,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-notify');
@@ -243,5 +233,5 @@ module.exports = function(grunt) {
 	// Tasks
 	grunt.registerTask( 'default', [ 'browserSync','watch' ] ); // Default
 	grunt.registerTask( 'dev', [ 'browserSync','watch' ] ); // Development
-	grunt.registerTask( 'prod', [ 'copy','includes','wiredep','htmlmin','sass:prod','uglify','todo','imagemin','svgmin' ] ); // Production
+	grunt.registerTask( 'prod', [ 'copy','includes','wiredep','htmlmin','sass:prod','todo','imagemin','svgmin' ] ); // Production
 };
