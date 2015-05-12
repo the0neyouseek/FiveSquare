@@ -1,9 +1,10 @@
-define(['underscore','backbone'], function(_,Backbone) {
+define(['underscore','backbone','models/checkin'], function(_,Backbone,Checkin) {
 
     var CheckInCollection = Backbone.Collection.extend({
-        url: '/checkin'
+        url: '/checkin',
+        model: Checkin
     });
 
     return CheckInCollection;
-    
+
 });
