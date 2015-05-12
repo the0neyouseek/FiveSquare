@@ -1,13 +1,17 @@
 @import "variables";
 // bower:scss
-@import "../js/vendor/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../js/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 body {
     font-family: "Source Sans Pro", sans-serif;
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 .navbar-toggle {
     display: block;
+}
+
+.google-map {
+    min-height: 210px;
 }
