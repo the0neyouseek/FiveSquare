@@ -20,7 +20,7 @@ define([
             event.preventDefault();
             formResult = $(event.currentTarget).serializeArray();
             checkin = new CheckinModel();
-            for (var i = 1; i < 3; i++) {
+            for (var i = 0; i < 2; i++) {
                 checkin.set(formResult[i].name,formResult[i].value);
             }
 
